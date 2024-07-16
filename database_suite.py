@@ -1,3 +1,4 @@
+import os
 import sql_query_test as sql
 import psycopg2
 from dotenv import load_dotenv
@@ -7,10 +8,10 @@ load_dotenv()
 def connect_to_db():
     """Function to establish a database connection"""
     conn = psycopg2.connect(
-        dbname=DB_NAME,
-        user=USER,
-        password=PASSWORD,
-        host=HOST
+        dbname=os.getenv('DB_NAME'),
+        user=os.getenv('USER'),
+        password=os.getenv('PASSWORD'),
+        host=os.getenv('HOST')
     )
     return conn
 
